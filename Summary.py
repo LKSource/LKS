@@ -1,4 +1,50 @@
 
+# itertools.permutations() - Manual
+from itertools import permutations
+if __name__ == '__main__':
+    word, num = input().split(" ")
+    permutations = list(permutations(word, int(num)))
+    permutations.sort()
+
+    [print("".join(i)) for i in permutations]
+______________________________________________
+
+# itertools.permutations() - Manual
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+answer = []
+base = 0
+
+def permutation(string, i, length):
+    #print(''.join(string), ''.join(string)[:base], ''.join(string)[-1*base:])
+    if ''.join(string)[:base] not in answer:
+        answer.append(''.join(string)[:base])
+    if ''.join(string)[-1*base:] not in answer:
+        answer.append(''.join(string)[-1*base:])
+
+    if i == length:
+        return
+    else:
+        for j in range(i, length):
+            string[i], string[j] = string[j], string[i]
+
+            # keep increasing i by 1 till it becomes equal to 0
+            permutation(string, i + 1, length)
+        string[i], string[j] = string[j], string[i]
+
+if __name__ == '__main__':
+    s = list(input().split(' '))
+    if len(s) == 1:
+        base = len(s[0])
+    else:
+        base = int(s[1])
+    s = list(s[0])
+    s.sort()
+    permutation(s, 0, len(s))
+    answer.sort()
+    for str in answer:
+        print(str)
+_______________________________________
+
 #Validating UID
 
 def check_validity(str):
