@@ -1,4 +1,46 @@
 
+#Validating UID
+
+def check_validity(str):
+    if len(str) != 10:
+        return "Invalid"
+    if not str.isalnum():
+        return "Invalid"
+    if max([str.count(s) for s in str]) >= 2:
+        return "Invalid"
+    if len(list([int(s) for s in str if s.isdigit()])) < 3:
+        return "Invalid"
+    if (sum(1 for s in str if s.isupper())) < 2:
+        return "Invalid"
+    return "Valid"
+
+if __name__ == '__main__':
+    N = int(input())
+    uid = []
+    for i in range(N):
+        uid.append(input())
+    for id in uid:
+        print(check_validity(id))
+
+#--------------------------------------------
+
+# List
+if __name__ == '__main__':
+    N = int(input())
+    ls = []
+    for i in range(N):
+        s = list(input().split(' '))
+        cmd = s[0]
+        args = s[1:]
+
+        if cmd != "print":
+            cmd += "(" + ",".join(args) + ")"
+            eval("ls."+cmd)
+        else:
+            print(ls)
+
+#------------------------------------
+
 n = 2
 x = 1
 y = 1
