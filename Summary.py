@@ -1,5 +1,23 @@
 
-# itertools.permutations() - Manual
+#itertools.combinations_with_replacement()
+from itertools import combinations_with_replacement
+
+if __name__ == '__main__':
+    word, num = input().split(" ")
+    print(*[''.join(j) for j in combinations_with_replacement(sorted(word), int(num))], sep='\n')
+
+______________________________________________
+
+# itertools.combinations()
+from itertools import combinations
+
+if __name__ == '__main__':
+    word, num = input().split(" ")
+    print(*[''.join(j) for i in range(1, int(num)+1) for j in combinations(sorted(word), i)], sep='\n')
+
+______________________________________________
+
+# itertools.permutations() 
 from itertools import permutations
 if __name__ == '__main__':
     word, num = input().split(" ")
