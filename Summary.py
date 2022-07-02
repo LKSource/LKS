@@ -1,4 +1,14 @@
 
+#Polar Coordinates
+from cmath import phase
+
+if __name__ == '__main__':
+    compnum = input()
+    print(abs(complex(compnum)))
+    print(phase(complex(compnum)))
+
+______________________________________________
+
 #itertools.combinations_with_replacement()
 from itertools import combinations_with_replacement
 
