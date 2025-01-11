@@ -1,3 +1,69 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'fairRations' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts INTEGER_ARRAY B as parameter.
+#
+
+def fairRations(B):
+    # Write your code here
+    if len(B) > 1:
+        t = [i % 2 for i in B].count(1)
+        if (t % 2 == 1):
+            return 'NO'
+        elif (t == 0):
+            return '0'
+        else:
+            indices = [i for i, x in enumerate([i % 2 for i in B]) if x == 1]
+            print(indices)
+            b = 0
+            j = 0
+            for i in range(0, len(indices)//2 + len(indices) % 2):
+                print(indices[j], indices[j+1])
+                b += indices[j+1] - indices[j]
+                j = i * 2 + 2
+            #print([(indices[i], indices[i+1]) for i in range(len(indices) - 1)])
+            #return (str)(sum(list(map(lambda x, y: y - x, indices[:-1], indices[1:]))) * 2)
+            if b == 0: return 'NO'
+            return (str) (b * 2)
+    else:
+        return 'NO'
+    #return B
+
+
+if __name__ == '__main__':
+    #fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    #N = int(input().strip())
+    N = 5
+
+    #B = list(map(int, input().rstrip().split()))
+    print(fairRations([10, 1]))
+    print(fairRations([2, 2]))
+    print(fairRations([2, 3, 4]))
+    print(fairRations([2, 3, 3]))
+    print(fairRations([1, 1, 1, 1]))
+    print(fairRations([1, 1, 1, 1, 10]))
+    print(fairRations([2, 3, 4, 5, 6, 7]))
+    print(fairRations([2, 3, 4, 5, 6, 8]))
+    print(fairRations([1, 4, 4, 4, 6, 5]))
+    print(fairRations([3, 5, 7, 9, 5]))
+    print(fairRations([3, 5, 7, 9, 5, 7]))
+
+
+    #fptr.write(result + '\n')
+
+    #fptr.close()
+------------------------------------------
+
 # !/bin/python3
 
 import math
