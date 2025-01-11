@@ -1,3 +1,52 @@
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'cavityMap' function below.
+#
+# The function is expected to return a STRING_ARRAY.
+# The function accepts STRING_ARRAY grid as parameter.
+#
+
+def cavityMap(grid):
+    # Write your code here
+    cavity = []
+    for i in range(1,len(grid) - 1):
+        for j in range(1,len(grid[i])-1):
+            r = []
+            #print(int(grid[i][j]))
+            r.append(int(grid[i][j])-int(grid[i+1][j]))
+            r.append(int(grid[i][j])-int(grid[i-1][j]))
+            r.append(int(grid[i][j])-int(grid[i][j-1]))
+            r.append(int(grid[i][j])-int(grid[i][j+1]))
+            if min(r) > 0:
+                cavity.append(list(map(int,(i, j))))
+    for i in range(0,len(cavity)):
+        #print(cavity[i][0],cavity[i][1])
+        t = list(grid[cavity[i][0]])
+        #print(t)
+        t[cavity[i][1]] = 'X'
+        #print(''.join(t))
+        grid[cavity[i][0]] = ''.join(t)
+    #print(cavity)
+    return grid
+
+if __name__ == '__main__':
+
+    n = 4
+    grid = ['1112', '1912', '1892', '1234']
+    result = cavityMap(grid)
+
+    print('\n'.join(result))
+
+----------------------------------------
+
 #!/bin/python3
 
 import math
