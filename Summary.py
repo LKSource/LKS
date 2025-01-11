@@ -1,3 +1,386 @@
+# !/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+import numpy as np
+
+
+# Complete the flatlandSpaceStations function below. Flatland Space Stations
+def flatlandSpaceStations(n, c):
+    c.sort()
+    h = max(c[0] - 0, n - 1 - c[len(c) - 1])
+    r = 0
+    if len(c) > 1:
+        r = max([c[i] - c[i - 1] - 1 for i in range(1, len(c))])
+    if r > 0:
+        if h > ((r // 2) + (r % 2)):
+            return h
+        else:
+            return ((r // 2) + (r % 2))
+    else:
+        return (h)
+
+    '''    d = []
+    c.sort()
+    N = list(set(list(range(n))) - set(c))
+    #d = [min([abs(j - i) for j in c]) for i in N]
+
+    for K in N:
+        t = c[min(range(len(c)), key=lambda i: abs(c[i] - K))]
+        t=min(enumerate(c),key=lambda x:abs(K-x[1]))
+        sorted_list = sorted(c, key=lambda x: abs(K - x))
+        print(sorted_list[0])
+        d.append(abs(K-t[1]))
+        print(abs(K-t[1]))
+
+    print(d)
+    if not d: return 0
+    return (max(d))
+
+    print(max([min([abs(j-i) for j in c]) for i in N]))
+
+    for i in N:
+        t = min([abs(j-i) for j in c])
+        #if t > d: d = t
+        d.append(t)
+    if len(d) > 0:
+        return (max(d))
+    return(max(d))
+
+    for i in N:
+        t = min([abs(j-i) for j in c])
+        if t > d: d = t
+    d = 0
+    N = list(set(list(range(n))) - set(c))
+
+    for i in N:
+        t = min([abs(j-i) for j in c])
+        if t > d: d = t
+    return(d)
+'''
+
+
+if __name__ == '__main__':
+    n = 5
+    c = [0, 4]
+    result = flatlandSpaceStations(n, c)
+    print(result)
+#        if i not in c:
+#            if i == 0:
+#                if i - c[0] > d: d = i - c[0]
+#            else:
+#            print(i)
+#            print(([abs(j-i) for j in c]))
+#            print(([abs(j - i) for j in c[::-1]]))
+
+------------------------
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'workbook' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER n
+#  2. INTEGER k
+#  3. INTEGER_ARRAY arr
+#
+
+def workbook(n, k, arr):
+    # Write your code here
+    i = 0
+    sp = 0
+    for a in arr:
+        p = 0
+        for j in range(0, a//k):
+            p += k
+            i += 1
+            if i > (j*k) and i <= p:
+                sp += 1
+            #print(p, sp)
+        if (a - (a//k * k)) > 0:
+            p += a - (a//k * k)
+            i += 1
+            if i > ((a//k)*k) and i <= p:
+                sp += 1
+            #print(p, sp)
+
+    return sp
+if __name__ == '__main__':
+    n = 5
+    k = 3
+    arr = [4, 2, 6, 1, 10]
+    print(workbook(n, k, arr))
+
+--------------------
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'serviceLane' function below.
+#
+# The function is expected to return an INTEGER_ARRAY.
+# The function accepts following parameters:
+#  1. INTEGER n
+#  2. 2D_INTEGER_ARRAY cases
+#
+
+
+def serviceLane(n, cases):
+    # Write your code here
+    result = []
+    print("here")
+    for a in cases:
+        print (width[a[0]:a[1]+1])
+        result.append(min(width[a[0]:a[1]+1]))
+    return result
+
+if __name__ == '__main__':
+
+    n = 5
+    t = 5
+    width = [1, 2, 2, 2, 1]
+    cases = [[2, 3], [1, 4], [2, 4], [2, 4], [2, 3]]
+    print(serviceLane(n, cases))
+    list = ['d', 'e', 'f', 'g']
+    print(list[1:3])
+
+---------------------------------------------------
+
+def generate_descending_sequence(start, percentage, num_terms):
+    sequence = [start]
+    for _ in range(1, num_terms):
+        next_value = sequence[-1] * (1 - percentage / 100)
+        sequence.append(next_value)
+    return sequence
+
+# Example usage
+start_number = float(input("Enter the starting number: "))
+percentage_decrement = float(input("Enter the percentage decrement: "))
+number_of_terms = int(input("Enter the number of terms: "))
+
+sequence = generate_descending_sequence(start_number, percentage_decrement, number_of_terms)
+
+print("Generated descending sequence:")
+for num in sequence:
+    print(num)
+
+---------------------------------------------------------
+
+#collections.OrderedDict
+from collections import OrderedDict
+
+if __name__ == '__main__':
+#    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    od = OrderedDict()
+    n = int(input())
+    for i in range(0,n):
+        item = list(input().split())
+        key = " ".join(item[:-1])
+        if key not in od.keys():
+            val = int(item[-1:][0])
+        else:
+            val = int(item[-1:][0]) + od[key]
+        od.update({key:val})
+        #od[" ".join(item[:-1])] = item[-1:][0]
+    litems = list(od.keys())
+    for k in od.keys():
+        print(k, od[k])
+
+_________________________________________________________
+
+#collections.namedtuple()
+from collections import namedtuple
+#from decimal import *
+
+if __name__ == '__main__':
+#    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+    clist = list(input().split())
+    Student = namedtuple('Student', clist)
+    som = 0
+    for i in range(0,n):
+        t = list(input().split())
+        s = Student(t[0],t[1],t[2],t[3])
+        som += int(s.MARKS)
+    print("%.2f" % (som/n))
+
+_________________________________________________
+
+if __name__ == '__main__':
+#    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = list(map(int, input().split()))
+    A = []
+    B = []
+    r = {}
+
+    for t_itr in range(t[0]):
+        A.append(input().rstrip().split())
+
+    for t_itr in range(t[1]):
+        B.append(input().rstrip().split())
+
+    for i in B:
+        my_list = []
+        for ic in range(len(A)):
+            if i == A[ic]:
+                my_list.append(ic+1)
+        if len(my_list) == 0:
+            my_list.append(-1)
+
+        r[str(i)] = my_list
+
+    for i in B:
+        print(*r[str(i)])
+
+______________________________________________________________________
+
+def chocolateFeast(n, c, m):
+    # Write your code here
+    tc = 0
+    l = n // c
+    tc = l
+    while l >= m:
+        tc += l // m
+        l = l // m + l % m
+
+    return (tc)
+
+if __name__ == '__main__':
+#    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input().strip())
+
+    for t_itr in range(t):
+        first_multiple_input = input().rstrip().split()
+
+        n = int(first_multiple_input[0])
+
+        c = int(first_multiple_input[1])
+
+        m = int(first_multiple_input[2])
+
+        result = chocolateFeast(n, c, m)
+
+ #       fptr.write(str(result) + '\n')
+        print(str(result))
+
+#    fptr.close()
+
+_________________________________________________________
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'timeInWords' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts following parameters:
+#  1. INTEGER h
+#  2. INTEGER m
+#
+single_digits = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "one"]
+two_digits = ["", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+tens_multiple = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+
+def getnum(num):
+
+    result =  ""
+    if num <= 10:
+        result = single_digits[num]
+    elif num < 20:
+        result = two_digits[num%10 + 1]
+    else:
+        result = tens_multiple[int(num/10)]
+        if num%10 != 0:
+            result += " "
+        result += single_digits[num%10]
+
+    return result
+
+def timeInWords(h, m):
+    # Write your code here
+    result = ""
+    if m == 0:
+        result = single_digits[h] + " o' clock"
+    elif m == 30:
+        result = "half past " + single_digits[h]
+    elif m % 15 == 0:
+        if m / 15 == 1:
+            result = "quarter past " + single_digits[h]
+        else:
+            result = "quarter to " + single_digits[h+1]
+    elif m > 30:
+        result = getnum(60-m)
+        if 60-m == 1:
+            result += " minute to "
+        else:
+            result += " minutes to "
+        result += single_digits[h+1]
+    else:
+        result = getnum(m)
+        if m == 1:
+            result += " minute past "
+        else:
+            result += " minutes past "
+        result += single_digits[h]
+    return result
+
+if __name__ == '__main__':
+    #fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    h = int(input().strip())
+
+    m = int(input().strip())
+
+    for i in range(0,60):
+        result = timeInWords(1, i)
+        print (result)
+
+    #fptr.write(result + '\n')
+
+    #fptr.close()
+
+_________________________________________________________
+#Introduction to Sets
+def average(array):
+    # your code goes here
+    l = []
+    k = [l.append(i) for i in array if i not in l]
+    number = round(float(sum(l)) / float(len(l)), 3)
+    return number
+
+if __name__ == '__main__':
+    n = int(input())
+    arr = list(map(int, input().split()))
+    result = average(arr)
+    print(result)
+______________________________________________
 
 #Polar Coordinates
 from cmath import phase
