@@ -5,6 +5,48 @@ import os
 import random
 import re
 import sys
+from itertools import combinations_with_replacement, permutations, product
+
+#
+# Complete the 'stones' function below.
+#
+# The function is expected to return an INTEGER_ARRAY.
+# The function accepts following parameters:
+#  1. INTEGER n
+#  2. INTEGER a
+#  3. INTEGER b
+#
+
+def stones(n, a, b):
+    # Write your code here
+    finals = []
+    for first in range(n):
+        finals.append(first * max(a, b) + (n - first - 1) * min(a, b))
+    return sorted(list(set(finals)))
+
+if __name__ == '__main__':
+
+    T = 1
+
+    for T_itr in range(T):
+        n = 1000
+
+        a = 999
+
+        b = 1000
+
+        result = stones(n, a, b)
+        print(result)
+
+------------------------------------
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
 from itertools import permutations
 
 #
