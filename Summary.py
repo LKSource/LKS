@@ -1,3 +1,50 @@
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'gridSearch' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts following parameters:
+#  1. STRING_ARRAY G
+#  2. STRING_ARRAY P
+#
+
+def gridSearch(G, P):
+    # Write your code here
+        for i in range(len(G) - len(P) + 1):
+                if P[0] not in G[i]:
+                        continue
+
+                for j in range(len(G[0]) - len(P[0]) + 1):
+                        if P[0] != G[i][j:j + len(P[0])]:
+                                continue
+
+                        for k in range(1, len(P)):
+                                if P[k] != G[i + k][j:j + len(P[0])]:
+                                        break
+
+                                if k == len(P) - 1:
+                                        return "YES"
+
+        return "NO"
+
+if __name__ == '__main__':
+    G=['7283455864','6731158619','8988242643','3839515324','9509509509','5633845374','6473530293','7053106601','0834282956','4607924137']
+    P = ["9509","3845","3530"]
+    result = gridSearch(G, P)
+    print(result)
+
+-------------------------------------
+
+
 #!/bin/python3
 
 import math
