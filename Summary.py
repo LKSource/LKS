@@ -1,4 +1,54 @@
 
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'happyLadybugs' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts STRING b as parameter.
+#
+
+def happyLadybugs(b):
+    # Write your code here
+    #print(b)
+    ladybugs = list(set([string for string in b if string != "_"]))
+    if "_" not in b:
+        for d in ladybugs:
+            #print(b.count(d))
+            if(b.count(d)==1):
+                return "NO"
+        for bug in range(1, len(b) - 1):
+            if b[bug] == b[bug - 1] or b[bug] == b[bug + 1]:
+                continue
+            else:
+                return "NO"
+        return "YES"
+    else:
+        for d in ladybugs:
+            #print(b.count(d))
+            if(b.count(d)==1):
+                return "NO"
+        return "YES"
+
+if __name__ == '__main__':
+
+    b = []
+    b.append("AABBC")
+    b.append("AABBC_C")
+    b.append("__")
+    b.append("DD__FQ_QQF")
+    b.append("AABCBC")
+    for bd in b:
+        result = happyLadybugs(bd)
+        print(result)
+
+-----------------------------
 
 #!/bin/python3
 
