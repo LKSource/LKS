@@ -1,4 +1,56 @@
+#!/bin/python3
 
+import math
+import os
+import random
+import re
+import sys
+from itertools import permutations
+
+#
+# Complete the 'formingMagicSquare' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts 2D_INTEGER_ARRAY s as parameter.
+#
+
+def isMagic(s):
+    for i in range(3):
+        if sum(s[i*3:i*3+3]) != 15:
+            return False
+        if sum(s[i::3]) != 15:
+            return False
+    if s[0] + s[4] + s[8] != 15:
+        return False
+    if s[2] + s[4] + s[6] != 15:
+        return False
+    return True
+
+def formingMagicSquare(s):
+    # Write your code here
+    ref=[i for j in s for i in j]
+    min_cost = 1000
+    best = None
+    for p in permutations(range(1, 10)):
+        cost = sum([abs(p[i] - ref[i]) for i in range(len(ref))])
+        if cost < min_cost and isMagic(p):
+            min_cost = cost
+            best = p
+
+    return(min_cost)
+
+if __name__ == '__main__':
+
+    s = []
+    s.append([5, 3, 4])
+    s.append([1, 5, 8])
+    s.append([6, 4, 2])
+
+    result = formingMagicSquare(s)
+
+    print(result)
+
+-------------------------------------------
 #!/bin/python3
 
 import math
