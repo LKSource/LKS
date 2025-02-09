@@ -8,6 +8,39 @@ import re
 import sys
 
 #
+# Complete the 'strangeCounter' function below.
+#
+# The function is expected to return a LONG_INTEGER.
+# The function accepts LONG_INTEGER t as parameter.
+#
+
+def strangeCounter(t):
+    # Write your code here
+    ref = 3
+    n = t
+    while True:
+        #print(n)
+        if n <= ref:
+            return(ref - n + 1)
+        n = t - ref
+        ref = 2 * ref
+        t = n
+
+if __name__ == '__main__':
+    for i in range(1, 25):
+        result = strangeCounter(i)
+        print(i, result)
+
+-----------------------------------
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
 # Complete the 'happyLadybugs' function below.
 #
 # The function is expected to return a STRING.
