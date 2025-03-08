@@ -6,6 +6,65 @@ import os
 import random
 import re
 import sys
+from operator import truediv
+
+from django.db.models.functions import TruncYear
+
+
+#
+# Complete the 'insertionSort1' function below.
+#
+# The function accepts following parameters:
+#  1. INTEGER n
+#  2. INTEGER_ARRAY arr
+#
+
+def insertionSort2(n, arr):
+    # Write your code here
+    # Write your code here
+    condition = True
+    l = n
+    t = arr[n-1]
+    if n == 1:
+        print(' '.join(map(str, arr)))
+        return
+    for j in range(1,l):
+        i = j
+        t = arr[j]
+        condition = True
+        while condition:
+            if t < arr[i-1] and i > 0:
+                arr[i] = arr[i-1]
+                i -= 1
+            else:
+                arr[i] = t
+                condition = False
+        print(' '.join(map(str,arr)))
+
+if __name__ == '__main__':
+    #n = int(input().strip())
+
+    #arr = list(map(int, input().rstrip().split()))
+
+
+    n = 2
+    arr = [2, 1]
+
+    n = 7
+    arr = [3, 4, 7, 5, 6, 2, 1]
+
+    n = 6
+    arr = [1, 4, 3, 5, 6, 2]
+    insertionSort2(n, arr)
+
+-----------------------------------------------
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
 
 from django.db.models.functions import TruncYear
 
