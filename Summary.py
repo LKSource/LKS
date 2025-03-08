@@ -1,3 +1,57 @@
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+from django.db.models.functions import TruncYear
+
+
+#
+# Complete the 'insertionSort1' function below.
+#
+# The function accepts following parameters:
+#  1. INTEGER n
+#  2. INTEGER_ARRAY arr
+#
+
+def insertionSort1(n, arr):
+    # Write your code here
+    l = True
+    i = n - 1
+    t = arr[n-1]
+    if n == 1:
+        print(' '.join(map(str, arr)))
+        return
+
+    while l:
+        if t < arr[i-1] and i > 0:
+            arr[i] = arr[i-1]
+            i -= 1
+        else:
+            arr[i] = t
+            l = False
+        print(' '.join(map(str,arr)))
+
+
+if __name__ == '__main__':
+    #n = int(input().strip())
+
+    #arr = list(map(int, input().rstrip().split()))
+    n = 5
+    arr = [2, 4, 6, 8, 3]
+
+    n = 2
+    arr = [2, 1]
+
+    insertionSort1(n, arr)
+
+--------------------------------------------
+
+
 #!/bin/python3
 
 import math
