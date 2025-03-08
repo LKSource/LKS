@@ -1,3 +1,57 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'bigSorting' function below.
+#
+# The function is expected to return a STRING_ARRAY.
+# The function accepts STRING_ARRAY unsorted as parameter.
+#
+
+def bigSorting(unsorted):
+    # Write your code here
+    # Write your code here
+    lengths = {len(i) for i in unsorted}
+    print(type(lengths))
+    s = []
+    for l in sorted(list(lengths)):
+        t = filter(lambda x: len(x) == l, unsorted)
+        s += sorted(t)
+    return s
+
+if __name__ == '__main__':
+
+    unsorted = ['8',
+                '1',
+                '2',
+                '100',
+                '12303479849857341718340192371',
+                '3084193741082937',
+                '3084193741082938',
+                '111',
+                '200',
+                '443',
+                '122']
+
+    my_file = open("idata.txt", "r")
+
+    # reading the file
+    data = my_file.read()
+
+    # replacing end splitting the text
+    # when newline ('\n') is seen.
+    unsorted = data.split("\n")
+    my_file.close()
+    result = bigSorting(unsorted)
+    print(len(unsorted))
+    print('\n'.join(result))
+    
+-----------------------------------------
 
 #!/bin/python3
 
