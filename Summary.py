@@ -19,6 +19,61 @@ from django.db.models.functions import TruncYear
 #  2. INTEGER_ARRAY arr
 #
 
+def insertion_sort(l):
+    # Write your code here
+    cnt = 0
+    for i in range(1, len(l)):
+        j = i-1
+        key = l[i]
+        while (j >= 0) and (l[j] > key):
+           l[j+1] = l[j]
+           cnt += 1
+           j -= 1
+        l[j+1] = key
+        #cnt += 1
+
+    return cnt
+
+if __name__ == '__main__':
+    #n = int(input().strip())
+
+    #arr = list(map(int, input().rstrip().split()))
+
+
+    n = 2
+    arr = [2, 1]
+
+    n = 7
+    arr = [3, 4, 7, 5, 6, 2, 1]
+
+    n = 6
+    ar = [2, 1, 3, 1, 2]
+
+    print(insertion_sort(ar))
+    print(" ".join(map(str, ar)))
+
+----------------------------
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+from operator import truediv
+
+from django.db.models.functions import TruncYear
+
+
+#
+# Complete the 'insertionSort1' function below.
+#
+# The function accepts following parameters:
+#  1. INTEGER n
+#  2. INTEGER_ARRAY arr
+#
+
 def insertionSort2(n, arr):
     # Write your code here
     # Write your code here
