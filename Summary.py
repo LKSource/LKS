@@ -1,4 +1,70 @@
 
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'bomberMan' function below.
+#
+# The function is expected to return a STRING_ARRAY.
+# The function accepts following parameters:
+#  1. INTEGER n
+#  2. STRING_ARRAY grid
+#
+
+def detonate(grid):
+    gridd = []
+    for i in range(0,len(grid)):
+        gridd.append(['O'] * len(grid[0]))
+    for i in range(0, len(grid)):
+        for k in [j for j in range(len(grid[i])) if grid[i][j] == "O"]:
+            if i - 1 >= 0:
+                gridd[i - 1][k] = "."
+            #gv1 = gridd[i]
+            gridd[i][k] = "."
+            if k - 1 >= 0: gridd[i][k - 1] = "."
+            if k + 1 < len(gridd[i]): gridd[i][k + 1] = "."
+
+            if i + 1 < len(grid):
+                gridd[i + 1][k] = "."
+
+    for i in range(0,len(gridd)):
+        gridd[i] = "".join(gridd[i])
+    return (gridd)
+    #print(grid, gridd)
+
+def bomberMan(n, grid):
+    # Write your code here
+    #print(grid)
+    grid3=grid
+    for i in range(0, (n-1) // 2):
+        #grid1 = grid3
+        grid3 = detonate(grid3)
+        #print("here")
+    #print((n-1) % 2)
+    match (n-1) % 2:
+        case 0:
+            return grid3
+        case 1:
+            return [''.join(['O'] * len(grid[0]))] * len(grid)
+
+
+if __name__ == '__main__':
+    r = 6
+    c = 7
+    n = 3
+    #grid =['.......', '...O.O.', '....O..','..O....', 'OO...OO', 'OO.O...']
+    grid = ['.......', '...O...', '....O..', '.......', 'OO.....', 'OO.....']
+
+    result = bomberMan(n, grid)
+    print('\n'.join(result))
+
+
+-------------------------------
 
 #!/bin/python3
 
